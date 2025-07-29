@@ -1,9 +1,9 @@
 # Open Command Prompt as Administrator
 # Create new project (replace with your preferred name)
-gcloud projects create patient-appointment-vinod --name="Patient Appointments"
+gcloud projects create patient-appointment --name="Patient Appointments"
 
 # Set active project
-gcloud config set project patient-appointment-vinod
+gcloud config set project patient-appointment
 
 # Enable required services
 gcloud services enable cloudbuild.googleapis.com
@@ -13,6 +13,3 @@ gcloud services enable containerregistry.googleapis.com
 # Authenticate Docker
 gcloud auth configure-docker
 
-=============
-App on GCP
-https://patient-appointment-app-271954040266.us-central1.run.app
