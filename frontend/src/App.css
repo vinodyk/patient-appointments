@@ -1,0 +1,396 @@
+/**
+ * Styles for Patient Appointment Booking System
+ * Author: Vinod Yadav
+ * Date: 7-25-2025
+ * Fixed Mobile Responsiveness
+ */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Message animations */
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Priority indicators */
+.priority-emergency {
+  border-left: 4px solid #dc2626;
+}
+
+.priority-high {
+  border-left: 4px solid #ea580c;
+}
+
+.priority-medium {
+  border-left: 4px solid #ca8a04;
+}
+
+.priority-low {
+  border-left: 4px solid #16a34a;
+}
+
+/* Agent response cards */
+.agent-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.agent-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Agent orchestration panel animations */
+.agent-panel-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.agent-panel-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Agent status indicators */
+.agent-active {
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Processing indicator */
+.processing-indicator {
+  animation: processing-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes processing-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Text clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Chat message hover effects */
+.chat-message:hover {
+  transform: translateY(-1px);
+}
+
+/* Agent icon animations */
+.agent-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.agent-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Panel toggle button */
+.panel-toggle {
+  transition: all 0.3s ease-in-out;
+}
+
+.panel-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Desktop Layout - Side by side */
+@media (min-width: 1024px) {
+  .main-container {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .chat-container {
+    flex: 1;
+  }
+  
+  .agent-panel {
+    width: 320px;
+    flex-shrink: 0;
+  }
+}
+
+/* Tablet Layout */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .chat-container {
+    width: 100%;
+  }
+  
+  .agent-panel {
+    width: 100%;
+    max-height: 400px;
+  }
+  
+  .agent-panel .agent-content {
+    max-height: 320px;
+    overflow-y: auto;
+  }
+}
+
+/* Mobile Layout - Stacked vertically */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .chat-container {
+    width: 100%;
+    order: 1; /* Chat appears first on mobile */
+  }
+  
+  .agent-panel {
+    width: 100%;
+    order: 2; /* Agent panel appears second on mobile */
+    max-height: 300px;
+  }
+  
+  .agent-panel .agent-content {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  
+  .chat-messages {
+    height: 300px; /* Smaller height on mobile */
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  /* Hide panel toggle on mobile since it's always stacked */
+  .panel-toggle {
+    display: none;
+  }
+  
+  /* Mobile header adjustments */
+  .chat-header {
+    padding: 1rem;
+  }
+  
+  .chat-header h2 {
+    font-size: 1.125rem;
+  }
+  
+  /* Mobile input area */
+  .chat-input-container {
+    padding: 0.75rem;
+  }
+  
+  .chat-input-container textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.25rem;
+  }
+  
+  .chat-header {
+    padding: 0.75rem;
+  }
+  
+  .chat-header h2 {
+    font-size: 1rem;
+  }
+  
+  .agent-panel {
+    max-height: 250px;
+  }
+  
+  .agent-panel .agent-content {
+    max-height: 170px;
+  }
+  
+  .chat-messages {
+    height: 250px;
+  }
+}
+
+/* Focus states */
+textarea:focus,
+button:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #3b82f6;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors;
+}
+
+/* Emergency alert animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.emergency-alert {
+  animation: blink 1s ease-in-out infinite;
+}
+
+/* Appointment slot cards */
+.appointment-slot {
+  @apply bg-white border border-gray-200 rounded-lg p-3 hover:border-blue-300 cursor-pointer transition-colors;
+}
+
+.appointment-slot:hover {
+  @apply bg-blue-50;
+}
+
+/* Typography */
+.medical-text {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.medical-text strong {
+  @apply text-gray-900 font-semibold;
+}
+
+/* Status indicators */
+.status-online {
+  @apply w-3 h-3 bg-green-500 rounded-full;
+}
+
+.status-busy {
+  @apply w-3 h-3 bg-yellow-500 rounded-full;
+}
+
+.status-offline {
+  @apply w-3 h-3 bg-gray-400 rounded-full;
+}
+
+/* Agent confidence bars */
+.confidence-bar {
+  height: 4px;
+  background: linear-gradient(to right, #ef4444, #f59e0b, #10b981);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: white;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Chat input enhancements */
+.chat-input {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.chat-input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Agent workflow visualization */
+.workflow-step {
+  position: relative;
+}
+
+.workflow-step::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 8px;
+  background: #e5e7eb;
+}
+
+.workflow-step:last-child::after {
+  display: none;
+}
+
+.workflow-step.active::after {
+  background: #3b82f6;
+}

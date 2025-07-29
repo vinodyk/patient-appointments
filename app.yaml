@@ -1,0 +1,41 @@
+# App Engine configuration for Patient Appointment System
+# Author: Vinod Yadav
+# Date: 7-25-2025
+
+runtime: python39
+
+env_variables:
+  APP_ENV: production
+  APP_HOST: 0.0.0.0
+  APP_PORT: 8080
+  DEBUG: False
+  MODEL_NAME: gpt-3.5-turbo
+  MAX_TOKENS: 1000
+  TEMPERATURE: 0.7
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+resources:
+  cpu: 2
+  memory_gb: 2
+
+handlers:
+  # Serve static files
+  - url: /static
+    static_dir: frontend/dist/assets
+    secure: always
+
+  # API routes
+  - url: /api/.*
+    script: auto
+    secure: always
+
+  # All other routes go to the React app
+  - url: /.*
+    script: auto
+    secure: always
+
+entrypoint: python main_simple.py

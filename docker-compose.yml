@@ -1,0 +1,26 @@
+# Docker Compose for Patient Appointment System
+# Author: Vinod Yadav
+# Date: 7-25-2025
+
+version: '3.8'
+
+services:
+  patient-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8080
+      - DEBUG=False
+      - MODEL_NAME=gpt-3.5-turbo
+      - MAX_TOKENS=1000
+      - TEMPERATURE=0.7
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

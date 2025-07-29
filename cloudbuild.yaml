@@ -1,0 +1,48 @@
+# Cloud Build configuration for Patient Appointment System
+# Author: Vinod Yadav
+# Date: 7-25-2025
+
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t', 'gcr.io/$PROJECT_ID/patient-appointment-app:$BUILD_ID',
+      '-t', 'gcr.io/$PROJECT_ID/patient-appointment-app:latest',
+      '.'
+    ]
+
+  # Push the Docker image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/patient-appointment-app:$BUILD_ID']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/patient-appointment-app:latest']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: [
+      'run', 'deploy', 'patient-appointment-app',
+      '--image', 'gcr.io/$PROJECT_ID/patient-appointment-app:$BUILD_ID',
+      '--region', 'us-central1',
+      '--platform', 'managed',
+      '--allow-unauthenticated',
+      '--port', '8080',
+      '--memory', '2Gi',
+      '--cpu', '2',
+      '--timeout', '300',
+      '--concurrency', '100',
+      '--max-instances', '10',
+      '--set-env-vars', 'APP_ENV=production'
+    ]
+
+images:
+  - 'gcr.io/$PROJECT_ID/patient-appointment-app:$BUILD_ID'
+  - 'gcr.io/$PROJECT_ID/patient-appointment-app:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: 'E2_HIGHCPU_8'
+
+timeout: '1200s'

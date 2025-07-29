@@ -1,0 +1,404 @@
+# Patient Appointment Booking System - .gitignore
+# Author: Vinod Yadav
+# Date: 7-25-2025
+
+# ===================================
+# Python
+# ===================================
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+.ENV/
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ===================================
+# Node.js / Frontend
+# ===================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# ===================================
+# Application Specific
+# ===================================
+
+# API Keys and Secrets
+.env
+.env.local
+.env.development
+.env.production
+*.key
+secrets.json
+config.json
+credentials.json
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+logs/
+log/
+debug.log
+error.log
+access.log
+uvicorn.log
+fastapi.log
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Medical data (sensitive)
+patient_data/
+medical_records/
+phi_data/
+protected_health_info/
+
+# AI Model artifacts
+models/
+*.model
+*.pkl
+*.pickle
+checkpoints/
+embeddings/
+
+# Vector databases
+vector_db/
+chroma_db/
+faiss_index/
+
+# Cache directories
+.cache/
+cache/
+tmp_cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.tmp
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Linux
+*~
+
+# ===================================
+# Development Tools
+# ===================================
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker
+Dockerfile.dev
+docker-compose.override.yml
+.dockerignore
+
+# Monitoring and profiling
+.profile
+.coverage
+.nyc_output
+
+# Documentation build
+docs/_build/
+docs/build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package files
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# ===================================
+# Frontend Specific
+# ===================================
+
+# Vite
+dist/
+dist-ssr/
+*.local
+
+# React specific
+.eslintcache
+
+# Tailwind CSS
+tailwind.config.js.backup
+
+# PostCSS
+postcss.config.js.backup
+
+# Build artifacts
+build/
+out/
+.next/
+.nuxt/
+
+# Storybook
+storybook-static/
+
+# ===================================
+# Miscellaneous
+# ===================================
+
+# Ignore all log files but keep log directories
+*.log
+!.gitkeep
+
+# Ignore sensitive configuration but keep examples
+config.json
+!config.example.json
+
+# Ignore all .env files except template
+.env*
+!.env.example
+
+# Ignore backup and temporary files
+*.bak
+*.tmp
+*.swp
+*.swo
+*~
+
+# Ignore OS specific files
+.DS_Store
+Thumbs.db
+*.lnk
